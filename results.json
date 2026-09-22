@@ -1,0 +1,489 @@
+{
+  "evalId": "eval-rnF-2026-09-22T19:58:18",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-09-22T19:58:18.379Z",
+    "prompts": [
+      {
+        "id": "e1933d2cf5d277a696a512cb728c2d79852e83f9060f3f97304cb6914369c4ff",
+        "raw": "{{item.model_answer}}",
+        "label": "{{item.model_answer}}",
+        "provider": "Generated RAG answer",
+        "metrics": {
+          "score": 2,
+          "testPassCount": 2,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 2,
+          "assertFailCount": 0,
+          "totalLatencyMs": 7,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 1024,
+              "prompt": 882,
+              "completion": 142,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {
+            "Alignment: expected vs model": 2
+          },
+          "namedScoresCount": {
+            "Alignment: expected vs model": 2
+          },
+          "namedScoreWeights": {
+            "Alignment: expected vs model": 2
+          },
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {
+            "Alignment: expected vs model": 1
+          },
+          "namedScoreWeights": {
+            "Alignment: expected vs model": 1
+          },
+          "tokensUsed": {
+            "total": 507,
+            "prompt": 437,
+            "completion": 70,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Alignment: expected vs model",
+                "provider": {
+                  "id": "ollama:chat:llama3.2:3b",
+                  "config": {
+                    "temperature": 0,
+                    "num_predict": 256,
+                    "keep_alive": "5m"
+                  }
+                },
+                "threshold": 0.71,
+                "value": "Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER\nfor the QUESTION.\n\nQUESTION:\n{{item.input}}\n\nEXPECTED ANSWER:\n{{item.expected_answer}}\n\nThe OUTPUT is the answer being evaluated.\n\nGive a score from 0.0 to 1.0.\n\nScoring:\n1.0 = fully correct and aligned\n0.8 = mostly correct with only minor issues\n0.6 = partially correct\n0.4 = substantially incomplete or incorrect\n0.2 = mostly incorrect\n0.0 = completely incorrect\n\nIf the OUTPUT and EXPECTED ANSWER convey the same information\nand correctly answer the QUESTION, score it 1.0.\n\nReturn a JSON object with exactly these fields:\n{\n  \"reason\": \"short explanation\",\n  \"score\": 1.0,\n  \"pass\": true\n}\n\nSet pass to true when score is 0.71 or higher.\nSet pass to false when score is below 0.71.\n"
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The OUTPUT and EXPECTED ANSWER convey the same information and correctly answer the QUESTION.",
+              "tokensUsed": {
+                "total": 507,
+                "prompt": 437,
+                "completion": 70,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "acceptedPrediction": 0,
+                  "rejectedPrediction": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nClick “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.\\n</Output>\\n<Rubric>\\nEvaluate the answer shown in OUTPUT against the EXPECTED ANSWER\\nfor the QUESTION.\\n\\nQUESTION:\\nHow do I create an account?\\n\\nEXPECTED ANSWER:\\nClick “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.\\n\\nThe OUTPUT is the answer being evaluated.\\n\\nGive a score from 0.0 to 1.0.\\n\\nScoring:\\n1.0 = fully correct and aligned\\n0.8 = mostly correct with only minor issues\\n0.6 = partially correct\\n0.4 = substantially incomplete or incorrect\\n0.2 = mostly incorrect\\n0.0 = completely incorrect\\n\\nIf the OUTPUT and EXPECTED ANSWER convey the same information\\nand correctly answer the QUESTION, score it 1.0.\\n\\nReturn a JSON object with exactly these fields:\\n{\\n  \\\"reason\\\": \\\"short explanation\\\",\\n  \\\"score\\\": 1.0,\\n  \\\"pass\\\": true\\n}\\n\\nSet pass to true when score is 0.71 or higher.\\nSet pass to false when score is below 0.71.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER\nfor the QUESTION.\n\nQUESTION:\nHow do I create an account?\n\nEXPECTED ANSWER:\nClick “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.\n\nThe OUTPUT is the answer being evaluated.\n\nGive a score from 0.0 to 1.0.\n\nScoring:\n1.0 = fully correct and aligned\n0.8 = mostly correct with only minor issues\n0.6 = partially correct\n0.4 = substantially incomplete or incorrect\n0.2 = mostly incorrect\n0.0 = completely incorrect\n\nIf the OUTPUT and EXPECTED ANSWER convey the same information\nand correctly answer the QUESTION, score it 1.0.\n\nReturn a JSON object with exactly these fields:\n{\n  \"reason\": \"short explanation\",\n  \"score\": 1.0,\n  \"pass\": true\n}\n\nSet pass to true when score is 0.71 or higher.\nSet pass to false when score is below 0.71.\n"
+              }
+            }
+          ]
+        },
+        "id": "84791a08-b7f7-4aac-b634-4c126776fbdd",
+        "latencyMs": 4,
+        "namedScores": {
+          "Alignment: expected vs model": 1
+        },
+        "prompt": {
+          "raw": "Click “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.",
+          "label": "{{item.model_answer}}",
+          "config": {}
+        },
+        "promptId": "e1933d2cf5d277a696a512cb728c2d79852e83f9060f3f97304cb6914369c4ff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": "Generated RAG answer"
+        },
+        "response": {
+          "output": "Click “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.",
+          "raw": "Click “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "numRequests": 1
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "item": {
+              "input": "How do I create an account?",
+              "expected_answer": "Click “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.",
+              "expected_tool": "knowledge_assistant",
+              "expected_category": "account_and_login",
+              "model_answer": "Click “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes."
+            }
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "metric": "Alignment: expected vs model",
+              "provider": {
+                "id": "ollama:chat:llama3.2:3b",
+                "config": {
+                  "temperature": 0,
+                  "num_predict": 256,
+                  "keep_alive": "5m"
+                }
+              },
+              "threshold": 0.71,
+              "value": "Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER\nfor the QUESTION.\n\nQUESTION:\n{{item.input}}\n\nEXPECTED ANSWER:\n{{item.expected_answer}}\n\nThe OUTPUT is the answer being evaluated.\n\nGive a score from 0.0 to 1.0.\n\nScoring:\n1.0 = fully correct and aligned\n0.8 = mostly correct with only minor issues\n0.6 = partially correct\n0.4 = substantially incomplete or incorrect\n0.2 = mostly incorrect\n0.0 = completely incorrect\n\nIf the OUTPUT and EXPECTED ANSWER convey the same information\nand correctly answer the QUESTION, score it 1.0.\n\nReturn a JSON object with exactly these fields:\n{\n  \"reason\": \"short explanation\",\n  \"score\": 1.0,\n  \"pass\": true\n}\n\nSet pass to true when score is 0.71 or higher.\nSet pass to false when score is below 0.71.\n"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 507,
+            "prompt": 437,
+            "completion": 70,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "item": {
+            "input": "How do I create an account?",
+            "expected_answer": "Click “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes.",
+            "expected_tool": "knowledge_assistant",
+            "expected_category": "account_and_login",
+            "model_answer": "Click “Sign Up,” enter your email, set a password, and verify via email. It takes less than two minutes."
+          }
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {
+            "Alignment: expected vs model": 1
+          },
+          "namedScoreWeights": {
+            "Alignment: expected vs model": 1
+          },
+          "tokensUsed": {
+            "total": 517,
+            "prompt": 445,
+            "completion": 72,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Alignment: expected vs model",
+                "provider": {
+                  "id": "ollama:chat:llama3.2:3b",
+                  "config": {
+                    "temperature": 0,
+                    "num_predict": 256,
+                    "keep_alive": "5m"
+                  }
+                },
+                "threshold": 0.71,
+                "value": "Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER\nfor the QUESTION.\n\nQUESTION:\n{{item.input}}\n\nEXPECTED ANSWER:\n{{item.expected_answer}}\n\nThe OUTPUT is the answer being evaluated.\n\nGive a score from 0.0 to 1.0.\n\nScoring:\n1.0 = fully correct and aligned\n0.8 = mostly correct with only minor issues\n0.6 = partially correct\n0.4 = substantially incomplete or incorrect\n0.2 = mostly incorrect\n0.0 = completely incorrect\n\nIf the OUTPUT and EXPECTED ANSWER convey the same information\nand correctly answer the QUESTION, score it 1.0.\n\nReturn a JSON object with exactly these fields:\n{\n  \"reason\": \"short explanation\",\n  \"score\": 1.0,\n  \"pass\": true\n}\n\nSet pass to true when score is 0.71 or higher.\nSet pass to false when score is below 0.71.\n"
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The OUTPUT and EXPECTED ANSWER convey the same information and correctly answer the QUESTION.",
+              "tokensUsed": {
+                "total": 517,
+                "prompt": 445,
+                "completion": 72,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "acceptedPrediction": 0,
+                  "rejectedPrediction": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nUse the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.\\n</Output>\\n<Rubric>\\nEvaluate the answer shown in OUTPUT against the EXPECTED ANSWER\\nfor the QUESTION.\\n\\nQUESTION:\\nI forgot my password. How can I reset it?\\n\\nEXPECTED ANSWER:\\nUse the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.\\n\\nThe OUTPUT is the answer being evaluated.\\n\\nGive a score from 0.0 to 1.0.\\n\\nScoring:\\n1.0 = fully correct and aligned\\n0.8 = mostly correct with only minor issues\\n0.6 = partially correct\\n0.4 = substantially incomplete or incorrect\\n0.2 = mostly incorrect\\n0.0 = completely incorrect\\n\\nIf the OUTPUT and EXPECTED ANSWER convey the same information\\nand correctly answer the QUESTION, score it 1.0.\\n\\nReturn a JSON object with exactly these fields:\\n{\\n  \\\"reason\\\": \\\"short explanation\\\",\\n  \\\"score\\\": 1.0,\\n  \\\"pass\\\": true\\n}\\n\\nSet pass to true when score is 0.71 or higher.\\nSet pass to false when score is below 0.71.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER\nfor the QUESTION.\n\nQUESTION:\nI forgot my password. How can I reset it?\n\nEXPECTED ANSWER:\nUse the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.\n\nThe OUTPUT is the answer being evaluated.\n\nGive a score from 0.0 to 1.0.\n\nScoring:\n1.0 = fully correct and aligned\n0.8 = mostly correct with only minor issues\n0.6 = partially correct\n0.4 = substantially incomplete or incorrect\n0.2 = mostly incorrect\n0.0 = completely incorrect\n\nIf the OUTPUT and EXPECTED ANSWER convey the same information\nand correctly answer the QUESTION, score it 1.0.\n\nReturn a JSON object with exactly these fields:\n{\n  \"reason\": \"short explanation\",\n  \"score\": 1.0,\n  \"pass\": true\n}\n\nSet pass to true when score is 0.71 or higher.\nSet pass to false when score is below 0.71.\n"
+              }
+            }
+          ]
+        },
+        "id": "db857d91-3c32-49c4-b58f-9ac785645f37",
+        "latencyMs": 3,
+        "namedScores": {
+          "Alignment: expected vs model": 1
+        },
+        "prompt": {
+          "raw": "Use the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.",
+          "label": "{{item.model_answer}}",
+          "config": {}
+        },
+        "promptId": "e1933d2cf5d277a696a512cb728c2d79852e83f9060f3f97304cb6914369c4ff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": "Generated RAG answer"
+        },
+        "response": {
+          "output": "Use the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.",
+          "raw": "Use the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "numRequests": 1
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "item": {
+              "input": "I forgot my password. How can I reset it?",
+              "expected_answer": "Use the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.",
+              "expected_tool": "knowledge_assistant",
+              "expected_category": "account_and_login",
+              "model_answer": "Use the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder."
+            }
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "metric": "Alignment: expected vs model",
+              "provider": {
+                "id": "ollama:chat:llama3.2:3b",
+                "config": {
+                  "temperature": 0,
+                  "num_predict": 256,
+                  "keep_alive": "5m"
+                }
+              },
+              "threshold": 0.71,
+              "value": "Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER\nfor the QUESTION.\n\nQUESTION:\n{{item.input}}\n\nEXPECTED ANSWER:\n{{item.expected_answer}}\n\nThe OUTPUT is the answer being evaluated.\n\nGive a score from 0.0 to 1.0.\n\nScoring:\n1.0 = fully correct and aligned\n0.8 = mostly correct with only minor issues\n0.6 = partially correct\n0.4 = substantially incomplete or incorrect\n0.2 = mostly incorrect\n0.0 = completely incorrect\n\nIf the OUTPUT and EXPECTED ANSWER convey the same information\nand correctly answer the QUESTION, score it 1.0.\n\nReturn a JSON object with exactly these fields:\n{\n  \"reason\": \"short explanation\",\n  \"score\": 1.0,\n  \"pass\": true\n}\n\nSet pass to true when score is 0.71 or higher.\nSet pass to false when score is below 0.71.\n"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 517,
+            "prompt": 445,
+            "completion": 72,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "item": {
+            "input": "I forgot my password. How can I reset it?",
+            "expected_answer": "Use the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder.",
+            "expected_tool": "knowledge_assistant",
+            "expected_category": "account_and_login",
+            "model_answer": "Use the “Forgot Password” link on the login page. A reset email will arrive instantly; if not, check your spam folder."
+          }
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 2,
+      "failures": 0,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 2,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 1024,
+          "prompt": 882,
+          "completion": 142,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 38923,
+      "evaluationDurationMs": 38923
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "Local RAG FAQ alignment evaluation",
+    "prompts": [
+      "{{item.model_answer}}"
+    ],
+    "providers": [
+      {
+        "id": "echo",
+        "label": "Generated RAG answer"
+      }
+    ],
+    "tests": [
+      {
+        "path": "file://load_tests.py:generate_tests",
+        "config": {
+          "dataset": "data/rag_model_answer.jsonl"
+        }
+      }
+    ],
+    "env": {},
+    "defaultTest": {
+      "assert": [
+        {
+          "type": "llm-rubric",
+          "metric": "Alignment: expected vs model",
+          "provider": {
+            "id": "ollama:chat:llama3.2:3b",
+            "config": {
+              "temperature": 0,
+              "num_predict": 256,
+              "keep_alive": "5m"
+            }
+          },
+          "threshold": 0.71,
+          "value": "Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER\nfor the QUESTION.\n\nQUESTION:\n{{item.input}}\n\nEXPECTED ANSWER:\n{{item.expected_answer}}\n\nThe OUTPUT is the answer being evaluated.\n\nGive a score from 0.0 to 1.0.\n\nScoring:\n1.0 = fully correct and aligned\n0.8 = mostly correct with only minor issues\n0.6 = partially correct\n0.4 = substantially incomplete or incorrect\n0.2 = mostly incorrect\n0.0 = completely incorrect\n\nIf the OUTPUT and EXPECTED ANSWER convey the same information\nand correctly answer the QUESTION, score it 1.0.\n\nReturn a JSON object with exactly these fields:\n{\n  \"reason\": \"short explanation\",\n  \"score\": 1.0,\n  \"pass\": true\n}\n\nSet pass to true when score is 0.71 or higher.\nSet pass to false when score is below 0.71.\n"
+        }
+      ],
+      "vars": {},
+      "options": {},
+      "metadata": {}
+    },
+    "outputPath": [
+      ".\\results.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {}
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.121.18",
+    "nodeVersion": "v22.22.3",
+    "platform": "win32",
+    "arch": "x64",
+    "exportedAt": "2026-09-22T19:58:57.571Z",
+    "evaluationCreatedAt": "2026-09-22T19:58:18.379Z"
+  },
+  "vars": [
+    "item"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": true,
+    "repeat": 1,
+    "maxConcurrency": 4,
+    "cache": false
+  }
+}

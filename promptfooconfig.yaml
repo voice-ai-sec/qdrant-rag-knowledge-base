@@ -1,0 +1,59 @@
+description: Local RAG FAQ alignment evaluation
+
+prompts:
+  - "{{item.model_answer}}"
+
+providers:
+  - id: echo
+    label: Generated RAG answer
+
+defaultTest:
+  assert:
+    - type: llm-rubric
+      metric: "Alignment: expected vs model"
+      provider:
+        id: ollama:chat:llama3.2:3b
+        config:
+          temperature: 0
+          num_predict: 256
+          keep_alive: "5m"
+      threshold: 0.71
+      value: |
+        Evaluate the answer shown in OUTPUT against the EXPECTED ANSWER
+        for the QUESTION.
+
+        QUESTION:
+        {{item.input}}
+
+        EXPECTED ANSWER:
+        {{item.expected_answer}}
+
+        The OUTPUT is the answer being evaluated.
+
+        Give a score from 0.0 to 1.0.
+
+        Scoring:
+        1.0 = fully correct and aligned
+        0.8 = mostly correct with only minor issues
+        0.6 = partially correct
+        0.4 = substantially incomplete or incorrect
+        0.2 = mostly incorrect
+        0.0 = completely incorrect
+
+        If the OUTPUT and EXPECTED ANSWER convey the same information
+        and correctly answer the QUESTION, score it 1.0.
+
+        Return a JSON object with exactly these fields:
+        {
+          "reason": "short explanation",
+          "score": 1.0,
+          "pass": true
+        }
+
+        Set pass to true when score is 0.71 or higher.
+        Set pass to false when score is below 0.71.
+
+tests:
+  - path: file://load_tests.py:generate_tests
+    config:
+      dataset: data/rag_model_answer.jsonl
